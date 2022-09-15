@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center">Edit campground</h1>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST"novalidate class="validated-form" >
+                <div class="mb-3">
+                    <lebel class="form-label" for="title">title</lebel>
+                    <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title%>" required>
+                    <!--name="campground[title] post요청에서 express를 지날때 컨텐츠를 그룹화할 수 있다."-->
+                </div>
+                <div class="mb-3">
+                    <lebel class="form-label" for="location">location</lebel>
+                    <input class="form-control" type="text" id="location" name="campground[location]" value="<%=campground.location%>" required>
+                </div>
+                <div class="mb-3">
+                    <lebel class="form-label" for="image">Image Url</lebel>
+                    <input class="form-control" type="text" id="image" name="campground[image]" value="<%=campground.image%>" required>
+                </div>
+
+                <div class="mb-3">
+                    <lebel class="form-label" for="price">Campground Price</lebel>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="<%=campground.price%>" aria-label="price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <lebel class="form-label" for="description">Description</lebel>
+                    <textarea class="form-control" type="text" id="description"
+                        name="campground[description]" required><%=campground.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update</button>
+                </div>
+            </form>
+            <a href="/campgrounds/<%=campground._id%>">Back to campground</a>
+        </div>
+    </div>
